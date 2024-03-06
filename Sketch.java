@@ -1,36 +1,44 @@
 import processing.core.PApplet;
 
 public class Sketch extends PApplet {
-	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
+
+  float flowerX = random(100,150);
+  float flowerY = random(100, 150);
+  float petalSize = random(25, 150);
+  float petalDistance = petalSize / 2;
+
   public void settings() {
-	// put your size call here
-    size(400, 400);
+
+    size(300, 300);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
   public void setup() {
-    background(210, 255, 173);
+
+    if (flowerX >= 125) {
+      background(210, 255, 173);
+    }
+    else {
+      background(182, 240, 238);
+    }
   }
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
   public void draw() {
-	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
 
-    stroke(255);
-    line(50, 125, 70, 50);  
+    // petals
+    fill(255, 99, 99);
+    // upper-left petal
+    ellipse(flowerX - petalDistance, flowerY - petalDistance, petalSize, petalSize);
+    // upper-right petal
+    ellipse(flowerX + petalDistance, flowerY - petalDistance, petalSize, petalSize);
+    // lower-left petal
+    ellipse(flowerX - petalDistance, flowerY + petalDistance, petalSize, petalSize);
+    // lower-right petal
+    ellipse(flowerX + petalDistance, flowerY + petalDistance, petalSize, petalSize);
+
+    // center petal
+    fill(233, 235, 155);
+    ellipse(flowerX, flowerY, petalSize, petalSize);
+
   }
-  
-  // define other methods down here.
+
 }
